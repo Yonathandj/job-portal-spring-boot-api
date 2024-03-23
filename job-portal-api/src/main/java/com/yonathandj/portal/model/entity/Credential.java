@@ -25,6 +25,9 @@ public class Credential {
     @OneToOne(mappedBy = "credential")
     private Applicant applicant;
 
+    @OneToOne(mappedBy = "credential")
+    private Employer employer;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id",  nullable = false, referencedColumnName = "id")
     private Role role;

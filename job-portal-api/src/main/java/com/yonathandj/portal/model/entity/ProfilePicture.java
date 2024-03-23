@@ -24,4 +24,7 @@ public class ProfilePicture {
 
     @OneToOne(mappedBy = "profilePicture")
     private Applicant applicant;
+
+    @OneToOne(mappedBy = "profilePicture")
+    private Employer employer;
 }
