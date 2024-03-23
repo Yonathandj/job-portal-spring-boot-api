@@ -23,5 +23,5 @@ public class Gender {
     private GenderEnum gender;
 
     @OneToOne(mappedBy = "gender")
-    private User user;
+    private Applicant applicant;
 }

@@ -5,14 +5,14 @@ import java.time.LocalDate;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "m_user")
+@Table(name = "m_applicant")
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class User {
+public class Applicant {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -41,6 +41,6 @@ public class User {
     private Credential credential;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_picture_id",  nullable = false, referencedColumnName = "id")
-    private UserPicture userPicture;
+    @JoinColumn(name = "profile_picture_id", referencedColumnName = "id")
+    private ProfilePicture profilePicture;
 }

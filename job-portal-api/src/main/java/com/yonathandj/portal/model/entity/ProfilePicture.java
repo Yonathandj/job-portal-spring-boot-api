@@ -4,14 +4,14 @@ import lombok.*;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "m_user_picture")
+@Table(name = "m_profile_picture")
 
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder(toBuilder = true)
-public class UserPicture {
+public class ProfilePicture {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
@@ -22,6 +22,6 @@ public class UserPicture {
     @Column(name = "path_name", unique = true)
     private String pathName;
 
-    @OneToOne(mappedBy = "userPicture")
-    private User user;
+    @OneToOne(mappedBy = "profilePicture")
+    private Applicant applicant;
 }

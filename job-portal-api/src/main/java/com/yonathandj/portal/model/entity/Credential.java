@@ -23,7 +23,7 @@ public class Credential {
     private String password;
 
     @OneToOne(mappedBy = "credential")
-    private User user;
+    private Applicant applicant;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "role_id",  nullable = false, referencedColumnName = "id")
