@@ -1,9 +1,10 @@
 package com.yonathandj.portal.model.request;
 
-import jakarta.validation.constraints.NotBlank;
 import lombok.*;
+
 import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotBlank;
 
 import com.yonathandj.portal.validation.create.OnCreateJobCategory;
 import com.yonathandj.portal.validation.update.OnUpdateJobCategory;
