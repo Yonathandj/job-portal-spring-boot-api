@@ -32,7 +32,7 @@ public class JobCategoryServiceImpl implements JobCategoryService {
 
     @Override
     public JobCategoryResponse getById(String id) {
-        JobCategory jobCategory = jobCategoryRepository.findById(id).orElseThrow(NoSuchElementException::new);
+        JobCategory jobCategory = jobCategoryRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Job category with id " + id + " not found"));
 
         return JobCategoryResponse.builder()
                 .id(jobCategory.getId())
@@ -53,7 +53,7 @@ public class JobCategoryServiceImpl implements JobCategoryService {
 
     @Override
     public JobCategoryResponse update(JobCategoryRequest jobCategoryRequest) {
-        JobCategory jobCategory = jobCategoryRepository.findById(jobCategoryRequest.getId()).orElseThrow(NoSuchElementException::new);
+        JobCategory jobCategory = jobCategoryRepository.findById(jobCategoryRequest.getId()).orElseThrow(() -> new NoSuchElementException("Job category with id " + jobCategoryRequest.getId() + " not found"));
 
         jobCategory.setName(jobCategoryRequest.getName().trim().toUpperCase());
         jobCategoryRepository.save(jobCategory);
@@ -66,6 +66,10 @@ public class JobCategoryServiceImpl implements JobCategoryService {
 
     @Override
     public String deleteById(String id) {
+        boolean existingJobCategory = jobCategoryRepository.existsById(id);
+        if (!existingJobCategory) {
+            throw new NoSuchElementException("Job category with id " + id + " not found");
+        }
         jobCategoryRepository.deleteById(id);
         return "Job category deleted successfully";
     }
