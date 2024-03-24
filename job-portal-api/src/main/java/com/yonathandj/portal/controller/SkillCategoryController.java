@@ -26,9 +26,8 @@ import org.springframework.validation.annotation.Validated;
 public class SkillCategoryController {
     private final SkillCategoryService skillCategoryService;
 
-    @Validated(OnCreateSkillCategory.class)
     @PostMapping
-    public ResponseEntity<?> createSkillCategory(@Valid @RequestBody SkillCategoryRequest skillCategoryRequest) {
+    public ResponseEntity<?> createSkillCategory(@Validated(OnCreateSkillCategory.class) @RequestBody SkillCategoryRequest skillCategoryRequest) {
         SkillCategoryResponse skillCategoryResponse = skillCategoryService.create(skillCategoryRequest);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(
@@ -64,9 +63,8 @@ public class SkillCategoryController {
         );
     }
 
-    @Validated(OnUpdateSkillCategory.class)
     @PutMapping
-    public ResponseEntity<?> updateSkillCategory(@Valid @RequestBody SkillCategoryRequest skillCategoryRequest) {
+    public ResponseEntity<?> updateSkillCategory(@Validated(OnUpdateSkillCategory.class) @RequestBody SkillCategoryRequest skillCategoryRequest) {
         SkillCategoryResponse skillCategoryResponse = skillCategoryService.update(skillCategoryRequest);
         return ResponseEntity.status(HttpStatus.OK).body(
                 DefaultResponse.builder()

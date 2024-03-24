@@ -20,8 +20,8 @@ public class JobCategoryRequest {
     @NotBlank(message = "Job category id cannot be blank", groups = OnUpdateJobCategory.class)
     private String id;
 
-    @NotNull(message = "Job category name cannot be null")
-    @NotBlank(message = "Job category name cannot be blank")
+    @NotNull(message = "Job category name cannot be null", groups = {OnCreateJobCategory.class, OnUpdateJobCategory.class})
+    @NotBlank(message = "Job category name cannot be blank",  groups = {OnCreateJobCategory.class, OnUpdateJobCategory.class})
     private String name;
 }
 

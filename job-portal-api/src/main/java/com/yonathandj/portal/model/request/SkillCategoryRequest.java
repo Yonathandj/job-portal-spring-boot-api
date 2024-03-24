@@ -20,7 +20,7 @@ public class SkillCategoryRequest {
     @NotBlank(message = "Skill category id cannot be blank", groups = OnUpdateSkillCategory.class)
     private String id;
 
-    @NotNull(message = "Skill category name cannot be null")
-    @NotBlank(message = "Skill category name cannot be blank")
+    @NotNull(message = "Skill category name cannot be null", groups = {OnCreateSkillCategory.class, OnUpdateSkillCategory.class})
+    @NotBlank(message = "Skill category name cannot be blank", groups = {OnCreateSkillCategory.class, OnUpdateSkillCategory.class})
     private String name;
 }

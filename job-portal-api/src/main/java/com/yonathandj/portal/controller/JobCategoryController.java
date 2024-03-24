@@ -26,9 +26,8 @@ import java.util.List;
 public class JobCategoryController {
     private final JobCategoryService jobCategoryService;
 
-    @Validated(OnCreateJobCategory.class)
     @PostMapping
-    public ResponseEntity<?> createJobCategory(@Valid @RequestBody JobCategoryRequest jobCategoryRequest) {
+    public ResponseEntity<?> createJobCategory(@Validated(OnCreateJobCategory.class) @RequestBody JobCategoryRequest jobCategoryRequest) {
         JobCategoryResponse jobCategoryResponse = jobCategoryService.create(jobCategoryRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(
                 DefaultResponse.builder()
@@ -63,9 +62,8 @@ public class JobCategoryController {
         );
     }
 
-    @Validated(OnUpdateJobCategory.class)
     @PutMapping
-    public ResponseEntity<?> updateJobCategory(@Valid @RequestBody JobCategoryRequest jobCategoryRequest) {
+    public ResponseEntity<?> updateJobCategory(@Validated(OnUpdateJobCategory.class) @RequestBody JobCategoryRequest jobCategoryRequest) {
         JobCategoryResponse jobCategoryResponse = jobCategoryService.update(jobCategoryRequest);
         return ResponseEntity.status(HttpStatus.OK).body(
                 DefaultResponse.builder()
